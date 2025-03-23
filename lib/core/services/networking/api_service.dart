@@ -8,12 +8,12 @@ import '../../constants/app_constants.dart';
 import '../../constants/app_strings.dart';
 import '../../helpers/translation_helper.dart';
 
-class ApiClient extends GetConnect {
+class ApiService extends GetConnect {
   static final GetStorage _storage = GetStorage();
   late String token;
   late String lang;
 
-  ApiClient() {
+  ApiService() {
     token = _storage.read(AppStrings.userLoginToken) ?? '';
     lang =
         _storage.read(AppStrings.langKey) ??

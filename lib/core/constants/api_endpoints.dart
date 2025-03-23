@@ -1,3 +1,4 @@
 class ApiEndpoints {
-  static const String categoriesUri = '/api/v1/categories';
+  static const String searchRepositories =
+      '/search/repositories?q=flutter&sort=stars&per_page=50';
 }
