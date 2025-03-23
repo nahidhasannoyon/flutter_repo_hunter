@@ -71,7 +71,7 @@ class TranslationHelper extends Translations {
   /// Checks if a translation file exists for the given locale
   static Future<bool> _isTranslationAvailable(Locale locale) async {
     String path =
-        'translations/${locale.languageCode}_${locale.countryCode}.json';
+        'assets/translations/${locale.languageCode}_${locale.countryCode}.json';
     try {
       await rootBundle.loadString(path);
       return true;
@@ -85,7 +85,7 @@ class TranslationHelper extends Translations {
   static Future<void> _loadAllTranslations() async {
     for (var language in availableLanguages) {
       String filePath =
-          'translations/${language.languageCode}_${language.countryCode}.json';
+          'assets/translations/${language.languageCode}_${language.countryCode}.json';
       try {
         String jsonString = await rootBundle.loadString(filePath);
         Map<String, dynamic> jsonMap = json.decode(jsonString);
