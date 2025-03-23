@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 
 import '../../../../data/models/repository_model.dart';
@@ -23,6 +25,7 @@ class GitHubController extends GetxController {
 
       repositories.value = await _repository.fetchTrendingRepositories();
     } catch (e) {
+      log(e.toString());
       errorMessage("Failed to fetch data. Try again later.");
     } finally {
       isLoading(false);

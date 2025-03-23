@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import '../../core/services/networking/api_service.dart';
 import '../models/repository_model.dart';
@@ -9,7 +11,7 @@ class GitHubRepository {
   Future<List<RepositoryModel>> fetchTrendingRepositories() async {
     try {
       final Response response = await _apiService.getRequest(
-        'search/repositories',
+        '/search/repositories',
         query: {
           'q': 'Flutter',
           'sort': 'stars',
@@ -17,6 +19,7 @@ class GitHubRepository {
           'per_page': '50',
         },
       );
+      log(response.body.toString());
 
       if (response.statusCode == 200) {
         final List<dynamic> items = response.body['items'] ?? [];
