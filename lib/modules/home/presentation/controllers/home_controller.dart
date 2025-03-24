@@ -1,21 +1,52 @@
 import 'package:get/get.dart';
+import '../../../../data/models/repository_model.dart';
+import '../../data/repositories/home_repository.dart';
 
 class HomeController extends GetxController {
+  final HomeRepository _homeRepository;
+
+  HomeController(this._homeRepository);
+
+  var repositories = <RepositoryModel>[].obs;
+  var isLoading = true.obs;
+  var errorMessage = ''.obs;
+
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
+    fetchRepositories();
   }
 
-  @override
-  void onReady() {
-    // TODO: implement onReady
-    super.onReady();
+  /// Fetch repositories from repository
+  Future<void> fetchRepositories() async {
+    try {
+      isLoading(true);
+      final result = await _homeRepository.fetchRepositories();
+      repositories.assignAll(result);
+      errorMessage('');
+    } catch (e) {
+      errorMessage(e.toString());
+    } finally {
+      isLoading(false);
+    }
   }
 
-  @override
-  void onClose() {
-    // TODO: implement onClose
-    super.onClose();
+  /// Sort repositories by stars
+  void sortByStars() {
+    // repositories.sort((a, b) => b.stars.compareTo(a.stars));
+    repositories.sort(
+      (a, b) => b.stars!.compareTo(a.stars!),
+    ); // Handles null safely
+  }
+
+  /// Sort repositories by last updated date
+  void sortByUpdatedDate() {
+    // repositories.sort((a, b) => b.updatedAt.compareTo(a.updatedAt));
+    repositories.sort(
+      (a, b) => (b.updatedAt != null ? b.updatedAt!.millisecondsSinceEpoch : 0)
+          .compareTo(
+            a.updatedAt != null ? a.updatedAt!.millisecondsSinceEpoch : 0,
+          ),
+    ); // Handles null safely
   }
 }

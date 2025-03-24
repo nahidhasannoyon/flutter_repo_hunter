@@ -35,8 +35,7 @@ class GitHubController extends GetxController {
   void sortRepositories() {
     if (sortType.value == SortType.stars) {
       repositories.sort(
-        (a, b) =>
-            (b.private == true ? 1 : 0).compareTo(a.private == true ? 1 : 0),
+        (a, b) => b.stars!.compareTo(a.stars!),
       ); // Handles null safely
     } else {
       repositories.sort(
