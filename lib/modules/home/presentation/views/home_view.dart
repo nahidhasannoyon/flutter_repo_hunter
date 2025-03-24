@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_repo_hunter/modules/home/presentation/controllers/github_controller.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/constants/app_colors.dart';
-import '../controllers/home_controller.dart';
-
 class HomeView extends GetView<GitHubController> {
   const HomeView({super.key});
 
