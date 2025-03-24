@@ -34,7 +34,6 @@ class HomeController extends GetxController {
 
   /// Sort repositories by stars
   void sortByStars() {
-    // repositories.sort((a, b) => b.stars.compareTo(a.stars));
     repositories.sort(
       (a, b) => b.stars!.compareTo(a.stars!),
     ); // Handles null safely
@@ -43,12 +42,10 @@ class HomeController extends GetxController {
 
   /// Sort repositories by last updated date
   void sortByUpdatedDate() {
-    // repositories.sort((a, b) => b.updatedAt.compareTo(a.updatedAt));
     repositories.sort(
-      (a, b) => (b.updatedAt != null ? b.updatedAt!.millisecondsSinceEpoch : 0)
-          .compareTo(
-            a.updatedAt != null ? a.updatedAt!.millisecondsSinceEpoch : 0,
-          ),
+      (a, b) => (b.updatedAt.millisecondsSinceEpoch).compareTo(
+        a.updatedAt.millisecondsSinceEpoch,
+      ),
     ); // Handles null safely
     sortMethod.value = 'updated';
   }

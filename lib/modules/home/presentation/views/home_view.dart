@@ -11,7 +11,10 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Trending Flutter Repositories')),
+      appBar: AppBar(
+        title: const Text('Trending Flutter Repositories'),
+        elevation: 5,
+      ),
       body: Obx(() {
         if (controller.isLoading.value) {
           return const Center(child: CircularProgressIndicator());
