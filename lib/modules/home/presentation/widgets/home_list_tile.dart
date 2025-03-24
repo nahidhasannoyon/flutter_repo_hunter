@@ -88,7 +88,13 @@ class HomeListTile extends StatelessWidget {
             SizedBox(height: 5),
             Row(
               children: [
-                Text('Language: ${repo.language ?? 'N/A'}'),
+                Row(
+                  children: [
+                    Icon(Icons.code, color: Colors.blue),
+                    SizedBox(width: 5),
+                    Text(repo.language ?? 'N/A'),
+                  ],
+                ),
                 Text('  |  '),
                 Row(
                   children: [
@@ -102,8 +108,14 @@ class HomeListTile extends StatelessWidget {
                   ],
                 ),
                 Text('  |  '),
-                Text(
-                  'Updated: ${repo.updatedAt.year}-${repo.updatedAt.month}-${repo.updatedAt.day}',
+                Row(
+                  children: [
+                    Icon(Icons.update, size: 16, color: Colors.green),
+                    SizedBox(width: 5),
+                    Text(
+                      '${repo.updatedAt.year}-${repo.updatedAt.month}-${repo.updatedAt.day}',
+                    ),
+                  ],
                 ),
               ],
             ),

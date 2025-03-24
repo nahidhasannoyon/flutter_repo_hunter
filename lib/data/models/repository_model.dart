@@ -15,6 +15,11 @@ class RepositoryModel {
   int? stars;
   DateTime updatedAt;
 
+  // For Details View
+  int? forksCount;
+  int? watchersCount;
+  int? openIssuesCount;
+
   RepositoryModel({
     required this.owner,
     required this.fullName,
@@ -23,6 +28,9 @@ class RepositoryModel {
     this.language,
     this.stars,
     required this.updatedAt,
+    this.forksCount,
+    this.watchersCount,
+    this.openIssuesCount,
   });
 
   factory RepositoryModel.fromJson(Map<String, dynamic> json) =>
@@ -34,6 +42,9 @@ class RepositoryModel {
         language: json["language"],
         stars: _parseStars(json['stargazers_count']),
         updatedAt: DateTime.parse(json["updated_at"]),
+        forksCount: json['forks_count'],
+        watchersCount: json['watchers_count'],
+        openIssuesCount: json['open_issues_count'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -44,6 +55,9 @@ class RepositoryModel {
     "language": language,
     "stargazers_count": stars,
     "updated_at": updatedAt.toIso8601String(),
+    "forks_count": forksCount,
+    "watchers_count": watchersCount,
+    "open_issues_count": openIssuesCount,
   };
 
   // A helper function to safely parse the stars field.
