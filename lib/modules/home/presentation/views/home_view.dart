@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_repo_hunter/modules/home/presentation/controllers/github_controller.dart';
 import 'package:get/get.dart';
+
+import '../controllers/github_controller.dart';
 
 class HomeView extends GetView<GitHubController> {
   const HomeView({super.key});
@@ -8,7 +9,23 @@ class HomeView extends GetView<GitHubController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Trending Flutter Repositories")),
+      appBar: AppBar(
+        title: const Text("Trending Flutter Repositories"),
+        actions: [
+          IconButton(
+            icon: Obx(
+              () => Icon(
+                controller.sortType.value == SortType.stars
+                    ? Icons.star
+                    : Icons.update,
+              ),
+            ),
+            onPressed: () {
+              controller.toggleSort();
+            },
+          ),
+        ],
+      ),
       body: Obx(() {
         if (controller.isLoading.value) {
           return const Center(child: CircularProgressIndicator());
@@ -29,7 +46,14 @@ class HomeView extends GetView<GitHubController> {
               ),
               title: Text(repo.name!),
               subtitle: Text(repo.description!),
-              trailing: Icon(Icons.star, color: Colors.amber),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.star, color: Colors.amber),
+                  const SizedBox(width: 4),
+                  Text(repo.private.toString()),
+                ],
+              ),
             );
           },
         );
