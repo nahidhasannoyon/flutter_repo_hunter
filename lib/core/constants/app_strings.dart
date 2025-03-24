@@ -9,4 +9,5 @@ class AppStrings {
   static const String darkMode = 'dark';
   static const String lightMode = 'light';
   static const String userLogData = 'user_log_data';
+  static const String cacheKey = 'cached_repositories';
 }
