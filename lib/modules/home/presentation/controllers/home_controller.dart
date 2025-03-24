@@ -10,6 +10,7 @@ class HomeController extends GetxController {
   var repositories = <RepositoryModel>[].obs;
   var isLoading = true.obs;
   var errorMessage = ''.obs;
+  var sortMethod = ''.obs; // Added observable to track sort method
 
   @override
   void onInit() {
@@ -37,6 +38,7 @@ class HomeController extends GetxController {
     repositories.sort(
       (a, b) => b.stars!.compareTo(a.stars!),
     ); // Handles null safely
+    sortMethod.value = 'stars';
   }
 
   /// Sort repositories by last updated date
@@ -48,5 +50,6 @@ class HomeController extends GetxController {
             a.updatedAt != null ? a.updatedAt!.millisecondsSinceEpoch : 0,
           ),
     ); // Handles null safely
+    sortMethod.value = 'updated';
   }
 }

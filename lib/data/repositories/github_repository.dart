@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:get/get.dart';
 import '../../core/services/networking/api_service.dart';
 import '../models/repository_model.dart';
@@ -19,7 +17,6 @@ class GitHubRepository {
           'per_page': '50',
         },
       );
-      log(response.body.toString());
 
       if (response.statusCode == 200) {
         final List<dynamic> items = response.body['items'] ?? [];

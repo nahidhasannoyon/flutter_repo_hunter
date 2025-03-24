@@ -2,32 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/utils/image_util.dart';
-import '../controllers/github_controller.dart';
 import '../controllers/home_controller.dart';
 
-class HomeView extends GetView<GitHubController> {
+class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final HomeController controller = Get.find<HomeController>();
-
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Trending Flutter Repositories'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.star),
-            onPressed: controller.sortByStars,
-            tooltip: 'Sort by Stars',
-          ),
-          IconButton(
-            icon: const Icon(Icons.update),
-            onPressed: controller.sortByUpdatedDate,
-            tooltip: 'Sort by Updated Date',
-          ),
-        ],
-      ),
+      appBar: AppBar(title: const Text('Trending Flutter Repositories')),
       body: Obx(() {
         if (controller.isLoading.value) {
           return const Center(child: CircularProgressIndicator());
@@ -47,7 +30,9 @@ class HomeView extends GetView<GitHubController> {
               title: Text(repo.name!),
               subtitle: Text(
                 repo.description!.isNotEmpty
-                    ? repo.description!
+                    ? repo.description!.length > 100
+                        ? '${repo.description!.substring(0, 100)}...'
+                        : repo.description!
                     : 'No description',
               ),
               trailing: Text('${repo.stars} ⭐'),
@@ -55,6 +40,77 @@ class HomeView extends GetView<GitHubController> {
           },
         );
       }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return Obx(
+                () => SafeArea(
+                  child: Wrap(
+                    children: [
+                      ListTile(
+                        leading: Icon(
+                          Icons.star,
+                          color:
+                              controller.sortMethod.value == 'stars'
+                                  ? Theme.of(context).primaryColor
+                                  : null,
+                        ),
+                        title: Text(
+                          'Sort by Stars',
+                          style: TextStyle(
+                            color:
+                                controller.sortMethod.value == 'stars'
+                                    ? Theme.of(context).primaryColor
+                                    : null,
+                          ),
+                        ),
+                        selected: controller.sortMethod.value == 'stars',
+                        onTap:
+                            controller.sortMethod.value == 'stars'
+                                ? null
+                                : () {
+                                  Get.back();
+                                  controller.sortByStars();
+                                },
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          Icons.update,
+                          color:
+                              controller.sortMethod.value == 'updated'
+                                  ? Theme.of(context).primaryColor
+                                  : null,
+                        ),
+                        title: Text(
+                          'Sort by Updated Date',
+                          style: TextStyle(
+                            color:
+                                controller.sortMethod.value == 'updated'
+                                    ? Theme.of(context).primaryColor
+                                    : null,
+                          ),
+                        ),
+                        selected: controller.sortMethod.value == 'updated',
+                        onTap:
+                            controller.sortMethod.value == 'updated'
+                                ? null
+                                : () {
+                                  Get.back();
+                                  controller.sortByUpdatedDate();
+                                },
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
+        },
+        tooltip: 'Sort Options',
+        child: const Icon(Icons.sort),
+      ),
     );
   }
 }
