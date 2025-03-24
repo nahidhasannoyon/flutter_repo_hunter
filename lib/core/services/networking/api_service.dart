@@ -10,7 +10,7 @@ class ApiService extends GetConnect {
     httpClient.baseUrl = AppConstants.baseUrl;
     httpClient.timeout = const Duration(seconds: 60);
 
-    // add headers
+    /* ------------------------------- Headers ------------------------------ */
     httpClient.addRequestModifier((Request request) {
       request.headers['User-Agent'] = 'FlutterRepoHunter';
       request.headers['Accept'] = 'application/vnd.github+json';
