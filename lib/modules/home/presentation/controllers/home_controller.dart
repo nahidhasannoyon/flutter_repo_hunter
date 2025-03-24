@@ -10,7 +10,7 @@ class HomeController extends GetxController {
   var repositories = <RepositoryModel>[].obs;
   var isLoading = true.obs;
   var errorMessage = ''.obs;
-  var sortMethod = ''.obs; // Added observable to track sort method
+  var sortMethod = ''.obs;
 
   @override
   void onInit() {
@@ -18,11 +18,11 @@ class HomeController extends GetxController {
     fetchRepositories();
   }
 
-  /// Fetch repositories from repository
+  /// Fetch repositories from HomeRepository
   Future<void> fetchRepositories() async {
     try {
       isLoading(true);
-      final result = await _homeRepository.fetchRepositories();
+      final result = await _homeRepository.getRepositories();
       repositories.assignAll(result);
       errorMessage('');
     } catch (e) {
@@ -34,9 +34,7 @@ class HomeController extends GetxController {
 
   /// Sort repositories by stars
   void sortByStars() {
-    repositories.sort(
-      (a, b) => b.stars!.compareTo(a.stars!),
-    ); // Handles null safely
+    repositories.sort((a, b) => b.stars!.compareTo(a.stars!));
     sortMethod.value = 'stars';
   }
 
@@ -46,7 +44,7 @@ class HomeController extends GetxController {
       (a, b) => (b.updatedAt.millisecondsSinceEpoch).compareTo(
         a.updatedAt.millisecondsSinceEpoch,
       ),
-    ); // Handles null safely
+    );
     sortMethod.value = 'updated';
   }
 }
