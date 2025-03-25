@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_repo_hunter/core/constants/app_colors.dart';
+import 'package:flutter_repo_hunter/domain/enums/sort_method.dart';
 import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
@@ -23,22 +25,27 @@ class SortingButton extends StatelessWidget {
                       leading: Icon(
                         Icons.star,
                         color:
-                            controller.sortMethod.value == 'stars'
-                                ? Theme.of(context).primaryColor
+                            controller.sortMethod.value ==
+                                    SortMethod.stars.toString()
+                                ? AppColor.primary
                                 : null,
                       ),
                       title: Text(
                         'Sort by Stars',
                         style: TextStyle(
                           color:
-                              controller.sortMethod.value == 'stars'
-                                  ? Theme.of(context).primaryColor
+                              controller.sortMethod.value ==
+                                      SortMethod.stars.toString()
+                                  ? AppColor.primary
                                   : null,
                         ),
                       ),
-                      selected: controller.sortMethod.value == 'stars',
+                      selected:
+                          controller.sortMethod.value ==
+                          SortMethod.stars.toString(),
                       onTap:
-                          controller.sortMethod.value == 'stars'
+                          controller.sortMethod.value ==
+                                  SortMethod.stars.toString()
                               ? null
                               : () {
                                 Get.back();
@@ -49,22 +56,27 @@ class SortingButton extends StatelessWidget {
                       leading: Icon(
                         Icons.update,
                         color:
-                            controller.sortMethod.value == 'updated'
-                                ? Theme.of(context).primaryColor
+                            controller.sortMethod.value ==
+                                    SortMethod.updated.toString()
+                                ? AppColor.primary
                                 : null,
                       ),
                       title: Text(
                         'Sort by Updated Date',
                         style: TextStyle(
                           color:
-                              controller.sortMethod.value == 'updated'
-                                  ? Theme.of(context).primaryColor
+                              controller.sortMethod.value ==
+                                      SortMethod.updated.toString()
+                                  ? AppColor.primary
                                   : null,
                         ),
                       ),
-                      selected: controller.sortMethod.value == 'updated',
+                      selected:
+                          controller.sortMethod.value ==
+                          SortMethod.updated.toString(),
                       onTap:
-                          controller.sortMethod.value == 'updated'
+                          controller.sortMethod.value ==
+                                  SortMethod.updated.toString()
                               ? null
                               : () {
                                 Get.back();

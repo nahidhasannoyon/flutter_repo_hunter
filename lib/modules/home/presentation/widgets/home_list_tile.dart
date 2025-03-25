@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_repo_hunter/core/utils/dimensions.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/constants/app_colors.dart';
 import '../../../../core/utils/image_util.dart';
 import '../../../../data/models/repository_model.dart';
 import '../views/repo_details_view.dart';
@@ -17,15 +19,27 @@ class HomeListTile extends StatelessWidget {
         Get.to(() => RepoDetailsView(repository: repo));
       },
       child: Container(
-        margin: const EdgeInsets.all(10),
-        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.all(Dimensions.marginSizeSmall),
+        padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
           border: Border(
-            bottom: BorderSide(color: Colors.grey, width: 0.5),
-            left: BorderSide(color: Colors.grey, width: 0.5),
-            right: BorderSide(color: Colors.grey, width: 0.5),
-            top: BorderSide(color: Colors.grey, width: 0.5),
+            bottom: BorderSide(
+              color: AppColor.dimText,
+              width: Dimensions.borderWidthExtraSmall,
+            ),
+            left: BorderSide(
+              color: AppColor.dimText,
+              width: Dimensions.borderWidthExtraSmall,
+            ),
+            right: BorderSide(
+              color: AppColor.dimText,
+              width: Dimensions.borderWidthExtraSmall,
+            ),
+            top: BorderSide(
+              color: AppColor.dimText,
+              width: Dimensions.borderWidthExtraSmall,
+            ),
           ),
         ),
         width: double.infinity,
@@ -35,26 +49,26 @@ class HomeListTile extends StatelessWidget {
             Row(
               children: [
                 SizedBox(
-                  width: 20,
-                  height: 20,
+                  width: Dimensions.imageSizeExtraSmall,
+                  height: Dimensions.imageSizeExtraSmall,
                   child: OwnerAvatar(avatarUrl: repo.owner.avatarUrl ?? ''),
                 ),
-                SizedBox(width: 10),
+                Dimensions.sizedBoxSmallHeight,
                 SizedBox(
                   width: Get.width * 0.7,
                   child: Text(
                     repo.fullName,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: Dimensions.iconSizeSmall,
                       fontWeight: FontWeight.bold,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
+                Dimensions.sizedBoxSmallWidth,
               ],
             ),
-            SizedBox(height: 5),
+            Dimensions.sizedBoxSmallHeight,
             Text(
               repo.description!.isNotEmpty
                   ? repo.description!.length > 100
@@ -72,26 +86,34 @@ class HomeListTile extends StatelessWidget {
                       .map(
                         (topic) => Chip(
                           shape: RoundedRectangleBorder(
-                            side: BorderSide(color: Colors.blue, width: 0.5),
-                            borderRadius: BorderRadius.circular(15),
+                            side: BorderSide(
+                              color: Colors.blue,
+                              width: Dimensions.borderWidthExtraSmall,
+                            ),
+                            borderRadius: BorderRadius.circular(
+                              Dimensions.radiusLarge,
+                            ),
                           ),
-                          backgroundColor: Colors.lightBlue[50],
+                          backgroundColor: AppColor.chipBg,
                           padding: EdgeInsets.all(0),
                           label: Text(
                             topic,
-                            style: TextStyle(fontSize: 10, color: Colors.blue),
+                            style: TextStyle(
+                              fontSize: Dimensions.fontSizeExtraSmall,
+                              color: AppColor.primary,
+                            ),
                           ),
                         ),
                       )
                       .toList(),
             ),
-            SizedBox(height: 5),
+            Dimensions.sizedBoxExtraSmallHeight,
             Row(
               children: [
                 Row(
                   children: [
-                    Icon(Icons.code, color: Colors.blue),
-                    SizedBox(width: 5),
+                    Icon(Icons.code, color: AppColor.primary),
+                    Dimensions.sizedBoxExtraSmallWidth,
                     Text(repo.language ?? 'N/A'),
                   ],
                 ),
@@ -100,18 +122,22 @@ class HomeListTile extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.star_border_outlined,
-                      size: 16,
-                      color: Colors.amber,
+                      size: Dimensions.iconSizeSmall,
+                      color: AppColor.star,
                     ),
-                    SizedBox(width: 5),
+                    Dimensions.sizedBoxExtraSmallWidth,
                     Text('${repo.stars}'),
                   ],
                 ),
                 Text('  |  '),
                 Row(
                   children: [
-                    Icon(Icons.update, size: 16, color: Colors.green),
-                    SizedBox(width: 5),
+                    Icon(
+                      Icons.update,
+                      size: Dimensions.iconSizeSmall,
+                      color: AppColor.green,
+                    ),
+                    Dimensions.sizedBoxExtraSmallWidth,
                     Text(
                       '${repo.updatedAt.year}-${repo.updatedAt.month}-${repo.updatedAt.day}',
                     ),

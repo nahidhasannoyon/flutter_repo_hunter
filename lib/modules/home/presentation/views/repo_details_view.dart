@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_repo_hunter/core/constants/app_colors.dart';
+import 'package:flutter_repo_hunter/core/utils/dimensions.dart';
 
+import '../../../../core/utils/image_util.dart';
 import '../../../../data/models/repository_model.dart';
 
 class RepoDetailsView extends StatelessWidget {
@@ -12,7 +15,7 @@ class RepoDetailsView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(repository.fullName)),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(Dimensions.paddingSizeDefault),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -20,41 +23,36 @@ class RepoDetailsView extends StatelessWidget {
             Row(
               children: [
                 CircleAvatar(
-                  radius: 40,
-                  backgroundImage:
-                      (repository.owner.avatarUrl?.isNotEmpty ?? false)
-                          ? NetworkImage(repository.owner.avatarUrl!)
-                          : null,
-                  child:
-                      (repository.owner.avatarUrl?.isEmpty ?? true)
-                          ? const Icon(Icons.person, size: 40)
-                          : null,
+                  radius: Dimensions.radiusImage,
+                  child: OwnerAvatar(
+                    avatarUrl: repository.owner.avatarUrl ?? '',
+                  ),
                 ),
-                const SizedBox(width: 16),
+                Dimensions.sizedBoxDefaultWidth,
                 Expanded(
                   child: Text(
                     repository.fullName,
-                    style: const TextStyle(
-                      fontSize: 22,
+                    style: TextStyle(
+                      fontSize: Dimensions.fontSizeOverLarge,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 20),
+            Dimensions.sizedBoxLargeHeight,
             // Repository description
             Text(
               repository.description ?? "No description available.",
-              style: const TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: Dimensions.fontSizeDefault),
             ),
-            const SizedBox(height: 20),
+            Dimensions.sizedBoxLargeHeight,
             // Stats Card
             Card(
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
               ),
-              elevation: 4,
+              elevation: Dimensions.elevation,
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 16,
@@ -79,7 +77,7 @@ class RepoDetailsView extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 16),
+                    Dimensions.sizedBoxDefaultHeight,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -104,17 +102,20 @@ class RepoDetailsView extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            Dimensions.sizedBoxLargeHeight,
             // Topics list
             if (repository.topics != null && repository.topics!.isNotEmpty)
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     "Topics",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: Dimensions.fontSizeExtraLarge,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                  const SizedBox(height: 8),
+                  Dimensions.sizedBoxSmallHeight,
                   Wrap(
                     spacing: 8,
                     runSpacing: 4,
@@ -122,16 +123,21 @@ class RepoDetailsView extends StatelessWidget {
                         repository.topics!.map((topic) {
                           return Chip(
                             shape: RoundedRectangleBorder(
-                              side: BorderSide(color: Colors.blue, width: 0.5),
-                              borderRadius: BorderRadius.circular(15),
+                              side: BorderSide(
+                                color: AppColor.primary,
+                                width: Dimensions.borderWidthExtraSmall,
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                Dimensions.radiusLarge,
+                              ),
                             ),
-                            backgroundColor: Colors.lightBlue[50],
+                            backgroundColor: AppColor.chipBg,
                             padding: EdgeInsets.all(0),
                             label: Text(
                               topic,
                               style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.blue,
+                                fontSize: Dimensions.fontSizeSmall,
+                                color: AppColor.primary,
                               ),
                             ),
                           );
@@ -148,14 +154,23 @@ class RepoDetailsView extends StatelessWidget {
   Widget _buildStatItem(IconData icon, String value, {String? title}) {
     return Column(
       children: [
-        Icon(icon, size: 28, color: Colors.blueGrey),
-        const SizedBox(height: 4),
+        Icon(icon, size: Dimensions.iconSizeDefault, color: AppColor.primary),
+        Dimensions.sizedBoxExtraSmallHeight,
         Text(
           value,
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontSize: Dimensions.fontSizeLarge,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         if (title != null)
-          Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: Dimensions.fontSizeDefault,
+              color: AppColor.dimText,
+            ),
+          ),
       ],
     );
   }

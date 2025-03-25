@@ -1,0 +1,1 @@
+enum SortMethod { stars, updated }

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../helpers/responsive_helper.dart';
 
@@ -43,6 +44,12 @@ class Dimensions {
   static const double iconSizeLarge = 32.0;
   static const double iconSizeExtraLarge = 50.0;
 
+  // image size
+  static const double imageSizeExtraSmall = 20.0;
+  static const double imageSizeSmall = 30.0;
+  static const double imageSizeDefault = 40.0;
+  static const double imageSizeLarge = 50.0;
+  static const double imageSizeExtraLarge = 60.0;
   static const double imageSizeExtraSeventy = 70.0;
   static const double bannerPadding = 40.0;
 
@@ -58,8 +65,36 @@ class Dimensions {
   static const double radiusDefault = 10.0;
   static const double radiusLarge = 15.0;
   static const double radiusExtraLarge = 20.0;
+  static const double radiusOverLarge = 25.0;
+  static const double radiusButton = 30.0;
+  static const double radiusImage = 40.0;
   static const double menuIconSize = 25.0;
   static const double featuredProductCard = 370.0;
   static const double compareCardWidget = 200.0;
   static const double clearanceHomeTitleHeight = 60.0;
+
+  // border
+  static const double borderWidthExtraSmall = 0.5;
+  static const double borderWidthSmall = 1.0;
+  static const double borderWidthDefault = 2.0;
+  static const double borderWidthLarge = 3.0;
+
+  // elevation
+  static const double elevation = 5.0;
+  static const double elevationSmall = 2.0;
+  static const double elevationLarge = 10.0;
+  static const double elevationExtraLarge = 15.0;
+
+  // size box's
+  static const Widget sizedBoxExtraSmallHeight = SizedBox(height: 5);
+  static const Widget sizedBoxSmallHeight = SizedBox(height: 10);
+  static const Widget sizedBoxDefaultHeight = SizedBox(height: 15);
+  static const Widget sizedBoxLargeHeight = SizedBox(height: 20);
+  static const Widget sizedBoxExtraLargeHeight = SizedBox(height: 25);
+
+  static const Widget sizedBoxExtraSmallWidth = SizedBox(width: 5);
+  static const Widget sizedBoxSmallWidth = SizedBox(width: 10);
+  static const Widget sizedBoxDefaultWidth = SizedBox(width: 15);
+  static const Widget sizedBoxLargeWidth = SizedBox(width: 20);
+  static const Widget sizedBoxExtraLargeWidth = SizedBox(width: 25);
 }

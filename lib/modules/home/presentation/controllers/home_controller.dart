@@ -1,3 +1,4 @@
+import 'package:flutter_repo_hunter/domain/enums/sort_method.dart';
 import 'package:get/get.dart';
 import '../../../../data/models/repository_model.dart';
 import '../../data/repositories/home_repository.dart';
@@ -35,7 +36,7 @@ class HomeController extends GetxController {
   /// Sort repositories by stars
   void sortByStars() {
     repositories.sort((a, b) => b.stars!.compareTo(a.stars!));
-    sortMethod.value = 'stars';
+    sortMethod.value = SortMethod.stars.toString();
   }
 
   /// Sort repositories by last updated date
@@ -45,6 +46,6 @@ class HomeController extends GetxController {
         a.updatedAt.millisecondsSinceEpoch,
       ),
     );
-    sortMethod.value = 'updated';
+    sortMethod.value = SortMethod.updated.toString();
   }
 }
