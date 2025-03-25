@@ -33,7 +33,7 @@ class HomeView extends GetView<HomeController> {
           },
         );
       }),
-      floatingActionButton: SortingButton(controller: controller),
+      floatingActionButton: SortingButton(),
     );
   }
 }

@@ -5,10 +5,8 @@ import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
 
-class SortingButton extends StatelessWidget {
-  const SortingButton({super.key, required this.controller});
-
-  final HomeController controller;
+class SortingButton extends GetView<HomeController> {
+  const SortingButton({super.key});
 
   @override
   Widget build(BuildContext context) {

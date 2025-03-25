@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../core/helpers/network_helper.dart';
 import '../../../../data/models/repository_model.dart';
@@ -16,6 +17,8 @@ class HomeController extends GetxController {
   var errorMessage = ''.obs;
   var sortMethod = Rx<SortMethod?>(null);
 
+  bool? _wasConnected; // Track last connection state
+
   @override
   void onInit() {
     super.onInit();
@@ -23,7 +26,6 @@ class HomeController extends GetxController {
     _listenToNetworkChanges();
   }
 
-  /// Check internet and fetch data accordingly
   Future<void> _checkInternetAndLoadData() async {
     isLoading(true);
     bool isConnected = await _networkHelper.checkConnection();
@@ -36,10 +38,7 @@ class HomeController extends GetxController {
       if (cachedData.isNotEmpty) {
         repositories.assignAll(cachedData);
       } else {
-        _showSnackbar(
-          "No Data Available in Cache",
-          "Please connect to the internet.",
-        );
+        _showSnackbar("No Data Available", "Please connect to the internet.");
       }
     }
     isLoading(false);
@@ -60,12 +59,16 @@ class HomeController extends GetxController {
     }
   }
 
-  /// Listen to network changes and auto-fetch if reconnected
   void _listenToNetworkChanges() {
     _networkHelper.connectionStream.listen((isConnected) {
-      if (isConnected) {
-        _showSnackbar("Internet Restored", "Fetching latest data...");
-        fetchRepositories();
+      if (_wasConnected != isConnected) {
+        // Only trigger if state changes
+        _wasConnected = isConnected;
+
+        if (isConnected) {
+          _showSnackbar("Internet Restored", "Fetching latest data...");
+          fetchRepositories();
+        }
       }
     });
   }
@@ -76,7 +79,8 @@ class HomeController extends GetxController {
       title,
       message,
       snackPosition: SnackPosition.BOTTOM,
-      duration: Duration(seconds: 3),
+      backgroundColor: Colors.black,
+      colorText: Colors.white,
     );
   }
 
