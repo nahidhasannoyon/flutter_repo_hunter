@@ -1,7 +1,4 @@
-import 'package:get/get.dart';
-import '../../../../data/repositories/repository_repository.dart';
-import '../../data/repositories/home_repository.dart';
-import '../controllers/home_controller.dart';
+import 'package:flutter_repo_hunter/core/constants/app_imports.dart';
 
 class HomeBinding extends Bindings {
   @override

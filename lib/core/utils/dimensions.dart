@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../helpers/responsive_helper.dart';
+import 'package:flutter_repo_hunter/core/constants/app_imports.dart';
 
 class Dimensions {
   static double fontSizeExtraSmall =

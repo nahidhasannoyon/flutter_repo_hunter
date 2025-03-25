@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_repo_hunter/core/constants/app_imports.dart';
 
 ThemeData dark = ThemeData(
   fontFamily: 'Schyler',

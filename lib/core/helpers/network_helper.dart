@@ -1,5 +1,4 @@
-import 'dart:async';
-import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter_repo_hunter/core/constants/app_imports.dart';
 
 class NetworkHelper {
   final Connectivity _connectivity = Connectivity();

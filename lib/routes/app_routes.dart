@@ -1,4 +1,4 @@
-import 'home_routes.dart';
+import 'package:flutter_repo_hunter/core/constants/app_imports.dart';
 
 class AppRoutes {
   AppRoutes._();

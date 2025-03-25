@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_repo_hunter/core/constants/app_colors.dart';
-import 'package:flutter_repo_hunter/core/utils/dimensions.dart';
-
-import '../../../../core/utils/image_util.dart';
-import '../../../../data/models/repository_model.dart';
+import 'package:flutter_repo_hunter/core/constants/app_imports.dart';
 
 class RepoDetailsView extends StatelessWidget {
   final RepositoryModel repository;

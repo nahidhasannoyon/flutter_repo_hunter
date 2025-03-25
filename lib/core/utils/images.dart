@@ -1,3 +1,4 @@
+
 class Images {
   static const String splashLogo = 'assets/images/logo_splash.png';
   static const String logoImage = 'assets/images/logo.png';

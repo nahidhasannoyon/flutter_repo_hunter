@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+import 'package:flutter_repo_hunter/core/constants/app_imports.dart';
 
 class Validators {
   static String validateEmail(String value) {

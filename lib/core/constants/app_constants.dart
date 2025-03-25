@@ -1,5 +1,4 @@
-import '../../data/models/language_model.dart';
-import '../utils/images.dart';
+import 'package:flutter_repo_hunter/core/constants/app_imports.dart';
 
 class AppConstants {
   static List<LanguageModel> languages = [

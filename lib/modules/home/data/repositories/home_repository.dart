@@ -1,5 +1,4 @@
-import '../../../../data/models/repository_model.dart';
-import '../../../../data/repositories/repository_repository.dart';
+import 'package:flutter_repo_hunter/core/constants/app_imports.dart';
 
 class HomeRepository {
   final RepositoryRepository _repositoryRepository;

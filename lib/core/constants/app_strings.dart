@@ -1,3 +1,4 @@
+
 class AppStrings {
   // shared preferences / local storage keys
   static const String userLoginToken = 'user_login_token';

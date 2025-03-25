@@ -1,11 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_repo_hunter/core/utils/dimensions.dart';
-import 'package:get/get.dart';
-
-import '../../../../core/constants/app_colors.dart';
-import '../../../../core/utils/image_util.dart';
-import '../../../../data/models/repository_model.dart';
-import '../views/repo_details_view.dart';
+import 'package:flutter_repo_hunter/core/constants/app_imports.dart';
 
 class HomeListTile extends StatelessWidget {
   const HomeListTile({super.key, required this.repo});

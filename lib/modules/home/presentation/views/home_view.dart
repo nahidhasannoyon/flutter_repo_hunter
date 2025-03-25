@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../controllers/home_controller.dart';
-import '../widgets/home_list_tile.dart';
-import '../widgets/sorting_button.dart';
+import 'package:flutter_repo_hunter/core/constants/app_imports.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});

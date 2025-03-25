@@ -1,4 +1,4 @@
-import 'dart:convert';
+import 'package:flutter_repo_hunter/core/constants/app_imports.dart';
 
 RepositoryModel repositoryModelFromJson(String str) =>
     RepositoryModel.fromJson(json.decode(str));

@@ -1,3 +1,4 @@
+
 // Custom exception for API errors
 class ApiException implements Exception {
   final int statusCode;

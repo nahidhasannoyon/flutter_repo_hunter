@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter_repo_hunter/core/constants/app_imports.dart';
 
 class ResponsiveHelper {
-
   static bool isMobilePhone() {
     if (!kIsWeb) {
       return true;
-    }else {
+    } else {
       return false;
     }
   }

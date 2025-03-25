@@ -1,3 +1,4 @@
+
 class AppLogger {
   void localLogWriter(String text, {bool isError = false}) {
     // pass the message to your favorite logging package here

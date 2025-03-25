@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import '../constants/app_strings.dart';
-import 'dart_theme.dart';
-import 'light_theme.dart';
+import 'package:flutter_repo_hunter/core/constants/app_imports.dart';
 
 class AppTheme {
   static final GetStorage _storage = GetStorage();

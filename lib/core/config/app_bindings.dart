@@ -1,7 +1,4 @@
-import 'package:get/get.dart';
-
-import '../helpers/network_helper.dart';
-import '../services/networking/api_service.dart';
+import 'package:flutter_repo_hunter/core/constants/app_imports.dart';
 
 class AppBindings extends Bindings {
   @override

@@ -1,12 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import 'core/config/app_bindings.dart';
-import 'core/config/app_initializer.dart';
-import 'core/config/app_logger.dart';
-import 'core/helpers/translation_helper.dart';
-import 'core/theme/app_theme.dart';
-import 'routes/app_routes.dart';
+import 'package:flutter_repo_hunter/core/constants/app_imports.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

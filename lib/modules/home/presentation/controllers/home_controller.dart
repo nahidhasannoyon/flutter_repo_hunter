@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../../../core/helpers/network_helper.dart';
-import '../../../../data/models/repository_model.dart';
-import '../../../../data/repositories/repository_repository.dart';
-import '../../../../data/providers/cache_provider.dart';
-import '../../../../domain/enums/sort_method.dart';
+import 'package:flutter_repo_hunter/core/constants/app_imports.dart';
 
 class HomeController extends GetxController {
   final RepositoryRepository _repositoryRepository;

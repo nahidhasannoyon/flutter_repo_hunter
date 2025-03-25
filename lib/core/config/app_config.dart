@@ -1,6 +1,4 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-
-import '../../domain/enums/app_mode.dart';
+import 'package:flutter_repo_hunter/core/constants/app_imports.dart';
 
 class AppConfig {
   static const String appName = 'Flutter App';

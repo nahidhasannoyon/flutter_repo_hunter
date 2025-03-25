@@ -1,7 +1,4 @@
-import 'package:get/get.dart';
-
-import '../modules/home/presentation/bindings/home_binding.dart';
-import '../modules/home/presentation/views/home_view.dart';
+import 'package:flutter_repo_hunter/core/constants/app_imports.dart';
 
 class HomeRoutes {
   HomeRoutes._();
