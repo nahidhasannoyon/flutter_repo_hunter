@@ -25,8 +25,7 @@ class SortingButton extends StatelessWidget {
                       leading: Icon(
                         Icons.star,
                         color:
-                            controller.sortMethod.value ==
-                                    SortMethod.stars.toString()
+                            controller.sortMethod.value == SortMethod.stars
                                 ? AppColor.primary
                                 : null,
                       ),
@@ -34,18 +33,14 @@ class SortingButton extends StatelessWidget {
                         'Sort by Stars',
                         style: TextStyle(
                           color:
-                              controller.sortMethod.value ==
-                                      SortMethod.stars.toString()
+                              controller.sortMethod.value == SortMethod.stars
                                   ? AppColor.primary
                                   : null,
                         ),
                       ),
-                      selected:
-                          controller.sortMethod.value ==
-                          SortMethod.stars.toString(),
+                      selected: controller.sortMethod.value == SortMethod.stars,
                       onTap:
-                          controller.sortMethod.value ==
-                                  SortMethod.stars.toString()
+                          controller.sortMethod.value == SortMethod.stars
                               ? null
                               : () {
                                 Get.back();
@@ -56,8 +51,7 @@ class SortingButton extends StatelessWidget {
                       leading: Icon(
                         Icons.update,
                         color:
-                            controller.sortMethod.value ==
-                                    SortMethod.updated.toString()
+                            controller.sortMethod.value == SortMethod.updated
                                 ? AppColor.primary
                                 : null,
                       ),
@@ -65,18 +59,15 @@ class SortingButton extends StatelessWidget {
                         'Sort by Updated Date',
                         style: TextStyle(
                           color:
-                              controller.sortMethod.value ==
-                                      SortMethod.updated.toString()
+                              controller.sortMethod.value == SortMethod.updated
                                   ? AppColor.primary
                                   : null,
                         ),
                       ),
                       selected:
-                          controller.sortMethod.value ==
-                          SortMethod.updated.toString(),
+                          controller.sortMethod.value == SortMethod.updated,
                       onTap:
-                          controller.sortMethod.value ==
-                                  SortMethod.updated.toString()
+                          controller.sortMethod.value == SortMethod.updated
                               ? null
                               : () {
                                 Get.back();

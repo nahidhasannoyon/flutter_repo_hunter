@@ -7,6 +7,8 @@ class NetworkHelper {
       StreamController<bool>.broadcast();
 
   NetworkHelper() {
+    // Check initial connection and listen for changes
+    checkConnection().then((status) => _connectionController.add(status));
     _connectivity.onConnectivityChanged.listen((
       List<ConnectivityResult> results,
     ) {
