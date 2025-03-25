@@ -1,8 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_repo_hunter/core/constants/api_endpoints.dart';
 
 import '../../../../core/services/networking/api_service.dart';
 import '../../../../data/models/repository_model.dart';
 import '../../../../data/providers/cache_provider.dart';
+import '../../core/exceptions/api_exception.dart';
 
 class RepositoryRepository {
   final ApiService _apiService;
@@ -35,6 +37,15 @@ class RepositoryRepository {
       }
     } catch (e) {
       // If API call fails, load cached repositories
+      if (e is ApiException) {
+        if (kDebugMode) {
+          print("API Error: ${e.message}");
+        }
+      } else {
+        if (kDebugMode) {
+          print("An unexpected error occurred: $e");
+        }
+      }
       return CacheProvider.loadRepositories();
     }
   }

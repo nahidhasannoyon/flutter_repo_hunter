@@ -1,9 +1,8 @@
 import 'dart:io';
-
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
-
 import '../../config/app_config.dart';
+import '../../exceptions/api_exception.dart';
 
 class ApiService extends GetConnect {
   ApiService() {
@@ -21,9 +20,8 @@ class ApiService extends GetConnect {
 
   Future<Response> getRequest(String uri, {Map<String, dynamic>? query}) async {
     try {
-      Response res = await get(uri, query: query);
-
-      return res;
+      final response = await get(uri, query: query);
+      return _handleResponse(response);
     } on SocketException catch (e) {
       throw SocketException(e.toString());
     } on FormatException {
@@ -35,7 +33,8 @@ class ApiService extends GetConnect {
 
   Future<Response> postRequest(String uri, dynamic body) async {
     try {
-      return await post(uri, body);
+      final response = await post(uri, body);
+      return _handleResponse(response);
     } on FormatException {
       throw FormatException("Unable to process the data".tr);
     } catch (e) {
@@ -45,7 +44,8 @@ class ApiService extends GetConnect {
 
   Future<Response> putRequest(String uri, dynamic body) async {
     try {
-      return await put(uri, body);
+      final response = await put(uri, body);
+      return _handleResponse(response);
     } on FormatException {
       throw FormatException("Unable to process the data".tr);
     } catch (e) {
@@ -55,11 +55,42 @@ class ApiService extends GetConnect {
 
   Future<Response> deleteRequest(String uri) async {
     try {
-      return await delete(uri);
+      final response = await delete(uri);
+      return _handleResponse(response);
     } on FormatException {
       throw FormatException("Unable to process the data".tr);
     } catch (e) {
       rethrow;
+    }
+  }
+
+  // Handles response and checks if the API call was successful
+  Response _handleResponse(Response response) {
+    if (response.isOk) {
+      // API request was successful
+      return response;
+    } else {
+      // If the response is not successful, throw an API error
+      throw ApiException(
+        statusCode: response.statusCode!,
+        message: _getErrorMessage(response.statusCode!),
+      );
+    }
+  }
+
+  // Provide custom error messages based on the status code
+  String _getErrorMessage(int statusCode) {
+    switch (statusCode) {
+      case 400:
+        return "Bad Request: The server could not understand the request.";
+      case 401:
+        return "Unauthorized: Authentication failed or user doesn't have permissions.";
+      case 404:
+        return "Not Found: The requested resource could not be found.";
+      case 500:
+        return "Internal Server Error: Something went wrong on the server.";
+      default:
+        return "An error occurred. Please try again later.";
     }
   }
 }
