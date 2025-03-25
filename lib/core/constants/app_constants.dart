@@ -2,12 +2,6 @@ import '../../data/models/language_model.dart';
 import '../utils/images.dart';
 
 class AppConstants {
-  static const String appName = 'Flutter App';
-  static const String slogan = 'Your Slogan Here';
-  static const String appVersion = '1.0.0';
-
-  static const String baseUrl = 'https://api.github.com';
-
   static List<LanguageModel> languages = [
     LanguageModel(
       imageUrl: Images.en,

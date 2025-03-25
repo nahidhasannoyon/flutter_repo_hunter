@@ -3,11 +3,11 @@ import 'dart:io';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
 
-import '../../constants/app_constants.dart';
+import '../../config/app_config.dart';
 
 class ApiService extends GetConnect {
   ApiService() {
-    httpClient.baseUrl = AppConstants.baseUrl;
+    httpClient.baseUrl = AppConfig.baseUrl;
     httpClient.timeout = const Duration(seconds: 60);
 
     /* ------------------------------- Headers ------------------------------ */
