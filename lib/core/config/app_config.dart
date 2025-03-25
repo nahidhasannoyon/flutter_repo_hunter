@@ -15,4 +15,5 @@ class AppConfig {
   }
 
   static String appMode = AppMode.development.toString();
+  // static String appMode = AppMode.production.toString();
 }
