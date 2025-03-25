@@ -33,7 +33,6 @@ class HomeController extends GetxController {
     if (isConnected) {
       await fetchRepositories();
     } else {
-      _showSnackbar("No Internet", "Loading data from cache...");
       List<RepositoryModel> cachedData = CacheProvider.loadRepositories();
       if (cachedData.isNotEmpty) {
         repositories.assignAll(cachedData);
@@ -68,6 +67,8 @@ class HomeController extends GetxController {
         if (isConnected) {
           _showSnackbar("Internet Restored", "Fetching latest data...");
           fetchRepositories();
+        } else {
+          _showSnackbar("No Internet", "Loading data from cache...");
         }
       }
     });
